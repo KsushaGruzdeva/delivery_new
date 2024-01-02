@@ -1,0 +1,20 @@
+<%- include('../partials/header'); -%>
+<h4>Создание товара</h4>
+<% if(message) { %>
+<div class="alert <%=message.alertClass %> alert-dismissible fade show" role="alert">
+  <%=message.message %>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<% } %>
+<form action="/api/items/create" method="post">
+  <div class="mb-3">
+    <label for="name" class="form-label">Наименование товара</label>
+    <input type="text" class="form-control" id="name" name="name" aria-describedby="name">
+  </div>
+  <div class="mb-3">
+    <label for="quantity" class="form-label">Количество</label>
+    <input type="number" class="form-control" id="quantity" name="quantity" min="1" value="1">
+  </div>
+  <button type="submit" class="btn btn-primary btn-sm">Создать</button>
+</form>
+<%- include('../partials/footer'); -%>

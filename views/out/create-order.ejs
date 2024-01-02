@@ -1,0 +1,30 @@
+<%- include('../partials/header'); -%>
+<h4>Создать заказ</h4>
+<% if(message) { %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <%=message %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% } %>
+<form action="/api/orders/create" method="post">
+  <div class="mb-3 visually-hidden ">
+    <input type="text" class="form-control" name="clientId" value="<%=tokenData.id %>" aria-describedby="clientId">
+  </div>
+  <div class="mb-3">
+    <label for="address" class="form-label">Укажите адрес доставки</label>
+    <input type="text" class="form-control" name="location" id="address" aria-describedby="address">
+  </div>
+  <% if(items.length === 0) { %>
+    <div class="alert alert-light" role="alert">
+      Список товаров пуст
+    </div>
+  <% } else { %>
+    <select class="form-select mb-3" multiple aria-label="Multiple select example" name="cartItemsId">
+      <% for(const item of items) { %>
+        <option value="<%=item.id %>"><%=item.name %></option>
+      <% }%>
+    </select>
+  <% }%>
+  <button type="submit" class="btn btn-primary">Создать</button>
+</form>
+<%- include('../partials/footer'); -%>

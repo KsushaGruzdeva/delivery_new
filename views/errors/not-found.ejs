@@ -1,0 +1,43 @@
+<%- include('../partials/header'); -%>
+
+<style>
+  .error {
+    position: relative;
+    padding: 120px 0;
+  }
+
+  .error .title {
+    font-size: 42px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+
+  @media (max-width: 480px) {
+    .error .title {
+      font-size: 32px;
+    }
+  }
+
+  .error .title b {
+    font-size: 72px;
+    color: #f45570;
+  }
+
+  .error p {
+    font-size: 18px;
+  }
+</style>
+
+<div class="error">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 text-center">
+        <img src="/assets/images/error-404.png" alt="image 404" style="width: 100%">
+        <h2><b>404</b> Ресурс не найден</h2>
+        <p>Возможно, эта страница была удалена</p>
+        <a href="/" class="btn btn-outline-danger mt-4">На главную</a>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('../partials/footer'); -%>

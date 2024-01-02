@@ -1,0 +1,32 @@
+<%- include('../partials/header'); -%>
+<h4>Регистрация</h4>
+<% if(message) { %>
+  <div class="alert <%=message.alertClass %> alert-dismissible fade show" role="alert">
+    <%=message.text %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% } %>
+<form action="/api/auth/signup" method="post">
+  <div class="mb-3">
+    <label for="username" class="form-label">Имя пользователя</label>
+    <input type="text" class="form-control" name="username" id="username">
+  </div>
+  <div class="mb-3">
+    <label for="login" class="form-label">Логин</label>
+    <input type="text" class="form-control" name="login" id="login">
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Почта</label>
+    <input type="email" class="form-control" name="email" id="email">
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Пароль</label>
+    <input type="password" class="form-control" name="password" id="password">
+  </div>
+  <div class="mb-3">
+    <label for="passwordConfirm" class="form-label">Подтвердите пароль</label>
+    <input type="password" class="form-control" name="passwordConfirm" id="passwordConfirm">
+  </div>
+  <button type="submit" class="btn btn-primary">Регистрация</button>
+</form>
+<%- include('../partials/footer'); -%>

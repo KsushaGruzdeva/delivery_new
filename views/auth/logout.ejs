@@ -1,0 +1,15 @@
+<script>
+  const response = fetch("/api/auth/logout", {
+    method: "POST",
+    cache: "no-cache",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    redirect: "follow",
+    body: JSON.stringify({token: localStorage.getItem("token")}),
+  }).then(response => {
+    console.log(response.json());
+    window.location.replace("/");
+  });
+</script>

@@ -1,0 +1,39 @@
+<%- include('partials/header'); -%>
+<h2>Главная страница</h2>
+<p>Доступные страницы:</p>
+<% if (!tokenData) { %>
+  <p>
+    <a href="/auth/login">Вход</a>
+  </p>
+  <p>
+    <a href="/auth/signup">Регистрация</a>
+  </p>
+<% } else if (tokenData.role === 4) { %>
+  <p>
+    <a href="/employees">Все сотрудники</a>
+  </p>
+  <p>
+    <a href="/items">Все товары</a>
+  </p>
+  <p>
+    <a href="/orders">Все заказы</a>
+  </p>
+  <p>
+    <a href="/auth/logout">Выход</a>
+  </p>
+<% } else if (tokenData.role === 1 || tokenData.role === 2 || tokenData.role === 3) { %>
+  <p>
+    <a href="/orders">Все заказы</a>
+  </p>
+  <p>
+    <a href="/auth/logout">Выход</a>
+  </p>
+<% } else { %>
+  <p>
+    <a href="/orders">Мои заказы</a>
+  </p>
+  <p>
+    <a href="/auth/logout">Выход</a>
+  </p>
+<% } %>
+<%- include('partials/footer'); -%>

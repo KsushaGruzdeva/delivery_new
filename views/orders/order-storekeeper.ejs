@@ -1,0 +1,32 @@
+<%- include('../partials/header'); -%>
+<h2>Заказ № <%=order.id %></h2>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Название товара</th>
+      <th scope="col">Количество</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(const item of order.cart) { %>
+    <tr>
+      <td><%=item.name %></td>
+      <td><%=item.quantity %></td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
+<% if (tokenData.role === 2) { %>
+<% if(!order.cartFilled){ %>
+<form action="/api/orders/fill_cart/<%=order.id %>" method="post">
+  <button type="submit" class="btn btn-outline-primary btn-sm">
+    Собрать заказ
+  </button>
+</form>
+<% } else {%>
+<div class="alert alert-light" role="alert">
+  Заказ собран
+</div>
+<% } %>
+<% } %>
+<%- include('../partials/footer'); -%>
